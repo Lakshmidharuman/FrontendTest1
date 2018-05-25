@@ -1,0 +1,110 @@
+<!-- FromGroup -->
+<form action=""
+method=""
+enctype="">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <!-- FormControl -->
+    <input type="text" 
+            class="form-control" 
+             name="firstName"
+             required
+             ngModel
+             #firstName="ngModel"
+             />
+             <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+              First Name is requireded 
+        </div>
+  </div>
+ 
+  <div class="form-group">
+    <label for="address">Address</label>
+    <textarea name="address" 
+          ngModel
+          required
+          #add="ngModel"
+          class="form-control"></textarea>
+          <div class="alert alert-danger" *ngIf="add.touched && !add.valid">
+            Address is required 
+      </div>
+  </div>
+  
+  <div class="radio">
+    <label for="gender">Gender</label>
+    <input type="radio"
+           required
+           name="gender"
+           value="1"
+           ngModel
+          #gen="ngModel"
+           />Male
+    <input type="radio" 
+         name="gender"
+         ngModel
+         value="2"/>FeMale
+         <div class="alert alert-danger" *ngIf="edc.touched && !gen.valid">
+           Gender is required
+         </div>
+  </div>
+  
+  <div class="checkbox"
+       ngModelGroup 
+       required
+       name="allSkills"
+        #skillsGroup="ngModelGroup">
+    <label for="skills">Skills</label>
+    <input type="checkbox" 
+           ngModel 
+           name="skills1"
+           value="1"/>C
+    <input type="checkbox"
+            name="skills2"
+            value="2"
+            ngModel 
+            />C++
+    <input type="checkbox"
+            name="skills3" 
+            value="3"
+            ngModel
+            />Java
+           <div class="alert alert-danger" *ngIf="edc.touched &&
+             skillsGroup.checked ">
+              Skills is required
+            </div>
+          </div>
+  <div class="select">
+    Education :
+    <select name="education"
+       ngModel
+       #edc="ngModel"
+       required
+       >
+      <option value="1">BE</option>
+      <option value="2">ME</option>
+      <option value="3">MBA</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="edc.touched && !edc.valid">
+      Education is required 
+</div>
+  </div>
+
+  
+  <div class="button">
+    <button class="btn btn-primary">Button</button>
+  </div>
+  </form>
+
+  
+
+  <p> {{firstName.value}}</p>
+  <p>{{add.value}}</p>
+  <p>{{gen.value}}</p>
+  <p>{{edc.value}}</p>
+  <p>{{skillsGroup.value}}</p>
+  
+
+
+  
+  
+  
+  

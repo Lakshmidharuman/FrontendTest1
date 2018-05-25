@@ -1,0 +1,105 @@
+<h1>Registration Form  </h1>
+<form action="reg.html" style="background-color:powderblue;">
+	First Name:
+		<input type='text' name='firstName'> <br><br>
+   Last Name:
+		<input type='text' name = 'lastName'><br><br>
+	
+	Age:
+		<input type='number' name='age'> <br><br>
+	Gender:
+		<input type='radio' name='gender' value='m'>Male
+		<input type='radio' name='gender' value='f'>FeMale <br><br>
+	Skills:
+		<input type='checkbox' name='skills' value='c'>C
+		<input type='checkbox' name='skills' value='cpp'>C++
+		<input type='checkbox' name='skills' value='Java'>Java <br><br>
+	Degree:
+		<select name='degree'>
+			<option value='select'>-SELECT-</option>
+			<option value='mca'>MCA</option>
+			<option value='be'>BE</option>
+			<option value='b.tech'>B.Tech</option> <br>
+		</select><br><br>
+
+	MobileNo:
+		<input type="number" name="Mobile_Number"  maxlength="10" autocomplete="on" onkeypress="return isNumberKey(event, getElementById('mobile_help1'));" onblur="isMobileValid(this, getElementById('mobile_help'));" required /><br><br>
+	
+
+Password:<input type="password"  name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+
+	<input type='submit' value ='Register' onclick='return validateReg()'> <br/><br>
+</form>
+
+<script>
+
+	function validateReg()
+	{
+		var form = document.forms[0];
+		var fn = form.firstName;
+		if(fn.value.length == 0)
+		{
+			alert("pls enter First name");
+			fn.focus();
+			return false;
+		}
+		var ln = form.lastName;
+		if(ln.value.length == 0)
+		{
+			alert("pls enter last name");
+			ln.focus();
+			return false;
+		}
+		var a1 = form.age;
+		if(a1.value.length == 0)
+		{
+			alert("pls enter age");
+			a1.focus();
+			return false;
+		}
+		var gen = form.gender;
+		var flag = true;
+		for(var i = 0; i < gen.length; i++)
+		{
+			if(gen[i].checked)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if(flag)
+		{
+			alert("pls select gender");
+			gen[0].focus();
+			return false;
+		}
+		var s1 = form.skills;
+		flag = true;
+		for(var i = 0; i < s1.length; i++)
+		{
+			if(s1[i].checked)
+			{
+				flag = false;
+				break;
+			}
+		}
+		if(flag)
+		{
+			alert("pls select skills");
+			s1[0].focus();
+			return false;
+		}
+		var d1 =  form.degree;
+		if(d1.value == "select")
+		{
+			alert("pls select degree");
+			d1.focus();
+			return false;
+		}
+		function isMobileValid(inputField, helpId) {
+				return editNodeText(/^[0-9]{10}$/, inputField.value, helpId, "Enter valid 10 digit Mobile number!");
+			}
+	}
+</script>
+
